@@ -1,5 +1,5 @@
 nginx:
-  image: tutum/nginx
+  image: quay.io/alaska/nginx-php
   ports:
     - 8081:80
   links:
