@@ -1,0 +1,21 @@
+nginx:
+  image: tutum/nginx
+  ports:
+    - 8081:80
+  links:
+    - postgresql
+    - 'redis:redisio'
+  volumes:
+    - '/srv/docker/testlink/app:/app'
+postgresql:
+  image: 'sameersbn/postgresql:9.4-3'
+  environment:
+    - DB_NAME=testlink
+    - DB_PASS=fishing
+    - DB_USER=tladmin
+  volumes:
+    - '/srv/docker/testlink/postgresql:/var/lib/postgresql'
+redis:
+  image: 'sameersbn/redis:latest'
+  volumes:
+    - '/srv/docker/testlink/redis:/var/lib/redis'
