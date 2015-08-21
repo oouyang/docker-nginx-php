@@ -10,6 +10,8 @@ RUN mkdir -p /etc/nginx
 RUN mkdir -p /var/run/php5-fpm
 
 RUN echo "date.timezone= Asia/Taipei" >> /etc/php5/fpm/php.ini
+RUN echo "session.gc_maxlifetime = 14400" >> /etc/php5/fpm/php.ini
+RUN echo "max_execution_time = 120" >> /etc/php5/fpm/php.ini
 RUN touch /etc/php5/fpm/conf.d/40-custom.ini
 RUN echo "zend_extension = xdebug.so" >> /etc/php5/fpm/conf.d/40-custom.ini
 RUN echo "xdebug.remote_enable = 1" >> /etc/php5/fpm/conf.d/40-custom.ini
