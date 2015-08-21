@@ -9,7 +9,7 @@ RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /etc/nginx
 RUN mkdir -p /var/run/php5-fpm
 
-RUN echo "date.timezone= Europe/Paris" >> /etc/php5/fpm/php.ini
+RUN echo "date.timezone= Asia/Taipei" >> /etc/php5/fpm/php.ini
 RUN touch /etc/php5/fpm/conf.d/40-custom.ini
 RUN echo "zend_extension = xdebug.so" >> /etc/php5/fpm/conf.d/40-custom.ini
 RUN echo "xdebug.remote_enable = 1" >> /etc/php5/fpm/conf.d/40-custom.ini
@@ -29,6 +29,7 @@ RUN echo "[program:php5-fpm]" >> /etc/supervisor/conf.d/supervisord.conf
 RUN echo "command = /usr/sbin/php5-fpm" >> /etc/supervisor/conf.d/supervisord.conf
 RUN echo "user = root" >> /etc/supervisor/conf.d/supervisord.conf
 RUN echo "autostart = true" >> /etc/supervisor/conf.d/supervisord.conf
+RUN echo "Asia/Taipei" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 RUN cd /tmp && \
     php -r "readfile('https://getcomposer.org/installer');" | php && \
